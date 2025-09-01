@@ -1,44 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agendamento Nubank</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Agendamento Nubank</h1>
-        <form id="agendamentoForm">
-            <div class="form-group">
-                <label for="nomeCompleto">Nome Completo</label>
-                <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo" required>
-            </div>
-            <div class="form-group">
-                <label for="cpf">CPF</label>
-                <input type="text" id="cpf" placeholder="Digite seu CPF" required>
-            </div>
-            <div class="form-group">
-                <label for="telefone">Número de Telefone</label>
-                <input type="tel" id="telefone" placeholder="Digite seu número de telefone" required>
-            </div>
-            <div class="form-group">
-                <label for="dataNascimento">Data de Nascimento</label>
-                <input type="date" id="dataNascimento" required>
-            </div>
-            <div class="form-group">
-                <label for="dataAgendamento">Data de Agendamento</label>
-                <input type="date" id="dataAgendamento" required>
-            </div>
-            <button type="submit" id="enviarBtn">Agendar</button>
-        </form>
-        <div id="mensagemSucesso" class="sucesso" style="display: none;">
-            <p>Agendamento realizado com sucesso! 😄</p>
-        </div>
-    </div>
+<form id="meuForm">
+  <input type="text" name="nome" placeholder="Nome" required />
+  <input type="email" name="email" placeholder="Email" required />
+  <textarea name="mensagem" placeholder="Mensagem" required></textarea>
+  <button type="submit">Enviar</button>
+</form>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="script.js"></script>
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+  emailjs.init("SEU_PUBLIC_KEY");
+
+  const form = document.getElementById("meuForm");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+      .then(() => alert("Email enviado com sucesso!"))
+      .catch(err => alert("Erro ao enviar email: " + err));
+  });
+</script>
