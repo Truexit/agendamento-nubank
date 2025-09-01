@@ -7,15 +7,16 @@
 
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  emailjs.init("SEU_PUBLIC_KEY");
+  emailjs.init("JJlMmd0kLsgrJvzn8");
 
   const form = document.getElementById("meuForm");
 
   form.addEventListener("submit", function(event) {
     event.preventDefault();
 
-    emailjs.sendForm('SEU_SERVICE_ID', 'SEU_TEMPLATE_ID', this)
+    emailjs.sendForm('service_lfca5g9', 'template_5hu65rb', this)
       .then(() => alert("Email enviado com sucesso!"))
       .catch(err => alert("Erro ao enviar email: " + err));
   });
 </script>
+
